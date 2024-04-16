@@ -1,6 +1,11 @@
 import { ReactTyped } from "react-typed";
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line
+TypeElement.propTypes = {
+  strings: PropTypes.arrayOf(PropTypes.string).isRequired,
+  delay: PropTypes.number
+};
+
 const TypeElement = ({ strings, delay }) => {
   return (
     <p>

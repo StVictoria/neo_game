@@ -1,6 +1,10 @@
 import styles from './Button.module.scss'
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line
+Button.propTypes = {
+  text: PropTypes.string
+};
+
 const Button = ({text}) => {
   return (
     <button className={styles.button}>{text}</button>

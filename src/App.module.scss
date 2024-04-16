@@ -1,0 +1,26 @@
+@import '../styles/vars';
+
+.firstLine {
+    margin-bottom: 4vw;
+}
+
+.lastLine {
+    margin: 4vw 0;
+}
+
+.startButtonWrapper {
+    opacity: 0;
+    pointer-events: none;
+    transition: $transition;
+
+    &.show {
+        opacity: 1;
+    }
+}
+
+.skip {
+    position: absolute;
+    top: 4vw;
+    right: 4vw;
+    color: $grey_light;
+}

@@ -11,13 +11,17 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-css-modules": "^4.7.11",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
     "react-typed": "^2.0.12",
     "sass": "^1.75.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

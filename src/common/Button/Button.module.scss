@@ -1,7 +1,10 @@
 @import "../styles/vars";
 
 .button {
+  color: $white;
   padding: 0.9vw 2vw;
+  border: 1px solid $white;
+  text-decoration: none;
   transition: $transition;
 
   &:hover {

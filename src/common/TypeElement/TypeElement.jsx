@@ -1,5 +1,5 @@
 import { ReactTyped } from "react-typed";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const TypeElement = ({ strings, delay }) => {
   return (
@@ -18,7 +18,7 @@ const TypeElement = ({ strings, delay }) => {
 
 TypeElement.propTypes = {
   strings: PropTypes.arrayOf(PropTypes.string).isRequired,
-  delay: PropTypes.number
+  delay: PropTypes.number,
 };
 
 export default TypeElement;

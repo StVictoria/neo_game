@@ -2,7 +2,7 @@
 
 .gameWrapper {
     display: grid;
-    grid-template-columns: repeat(5, 100px); /* Создает 4 столбца с равной шириной */
+    grid-template-columns: repeat(5, 100px);
     grid-gap: 40px;
 }
 

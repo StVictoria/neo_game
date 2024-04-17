@@ -24,13 +24,17 @@ const Game = ({
     setShuffledCards(cardsCopy);
   }, []);
 
+  // card: {id: number, value: number}
   const onCardClick = (card) => {
     if (!openedCards[0]) {
-      setOpenedCards([card]);
+      // если нет открытых карточек
+      setOpenedCards([card]); // устанавливаем первую
     } else {
+      // если открыта уже одна карточка
       setOpenedCards((prevOpened) => {
-        const newOpenedState = [...prevOpened, card];
+        const newOpenedState = [...prevOpened, card]; // добавляем новую карточку в текущий массив к 1й открытой
         if (card.value === newOpenedState[0].value)
+          // и если они совпадают, то добавляем в массив match их айди
           setMatchedCards((prevMatched) => [
             ...prevMatched,
             newOpenedState[0].id,
@@ -38,8 +42,7 @@ const Game = ({
           ]);
         return newOpenedState;
       });
-
-      setOpenedCards([]);
+      setOpenedCards([]); // очищаем массив с открытыми карточками, тк их должно быть не больше двух
     }
   };
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./GamePage.module.scss";
 import Time from "./Time/Time";
 import Game from "./Game/Game";
@@ -30,11 +30,19 @@ const cards = [
 const GamePage = () => {
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
+  const [isVictory, setIsVictory] = useState(false);
 
   const [matchedCards, setMatchedCards] = useState([]);
   const [openedCards, setOpenedCards] = useState([]); // [{id: number, value: number}, {...}]
 
   const cardsAmount = cards.length;
+
+  useEffect(() => {
+    if (matchedCards.length === cardsAmount) {
+      setIsVictory(true);
+      setIsGameFinished(true);
+    }
+  }, [matchedCards.length]);
 
   return (
     <div className={styles.gamePage}>
@@ -42,6 +50,7 @@ const GamePage = () => {
         <div>Open Welcome</div>
         <Time
           isGameStarted={isGameStarted}
+          isVictory={isVictory}
           setIsGameFinished={setIsGameFinished}
         />
         <div>Matched: {matchedCards.length}</div>
@@ -59,7 +68,7 @@ const GamePage = () => {
             </button>
           </div>
         ) : isGameFinished ? (
-          <Results isWon={matchedCards === cardsAmount} />
+          <Results isVictory={isVictory} />
         ) : (
           <Game
             cards={cards}

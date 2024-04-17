@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
-const Time = ({ isGameStarted, setIsGameFinished }) => {
-  const [timeLimit, setTimeLimit] = useState(1000000); // seconds
+const Time = ({ isGameStarted, isVictory, setIsGameFinished }) => {
+  const [timeLimit, setTimeLimit] = useState(180); // seconds
 
-  let timer;
+  const timerRef = useRef(null);
 
   const getRemainingTime = () => {
     let remainingMinutes = Math.floor(timeLimit / 60);
@@ -12,12 +12,16 @@ const Time = ({ isGameStarted, setIsGameFinished }) => {
     return `${remainingMinutes}:${remainingSeconds.padStart(2, "0")}`;
   };
 
+  const finishGame = () => {
+    clearInterval(timerRef.current);
+    setIsGameFinished(true);
+  };
+
   const startTimer = () => {
-    timer = setInterval(() => {
+    timerRef.current = setInterval(() => {
       setTimeLimit((prevTime) => {
         if (prevTime === 0) {
-          clearInterval(timer);
-          setIsGameFinished(true);
+          finishGame();
           return 0;
         }
         return prevTime - 1;
@@ -26,13 +30,17 @@ const Time = ({ isGameStarted, setIsGameFinished }) => {
   };
 
   useEffect(() => {
+    isVictory && finishGame();
+  }, [isVictory]);
+
+  useEffect(() => {
     if (isGameStarted) {
       startTimer();
     }
   }, [isGameStarted]);
 
   useEffect(() => {
-    return () => clearInterval(timer);
+    return () => clearInterval(timerRef.current);
   }, []);
 
   return <div>{getRemainingTime()}</div>;
@@ -40,6 +48,7 @@ const Time = ({ isGameStarted, setIsGameFinished }) => {
 
 Time.propTypes = {
   isGameStarted: PropTypes.bool,
+  isVictory: PropTypes.bool,
   setIsGameFinished: PropTypes.func,
 };
 

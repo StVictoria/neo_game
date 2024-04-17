@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import Button from "../../common/Button/Button";
 import styles from "./Results.module.scss";
 
-const Results = ({ isVictory, setIsVictory, setIsGameStarted }) => {
+const Results = ({ isVictory, setIsVictory, onStart }) => {
   const playAgain = () => {
-    setIsGameStarted(true);
+    onStart();
     setIsVictory(false);
   };
 
@@ -31,7 +31,7 @@ const Results = ({ isVictory, setIsVictory, setIsGameStarted }) => {
 Results.propTypes = {
   isVictory: PropTypes.bool,
   setIsVictory: PropTypes.func,
-  setIsGameStarted: PropTypes.func,
+  onStart: PropTypes.func,
 };
 
 export default Results;

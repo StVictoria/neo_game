@@ -27,9 +27,14 @@ const cards = [
   // { id: 20, img: "///", value: 1000 },
 ];
 
+const GAME_STATUSES = {
+  PRESTART: "prestart",
+  STARTED: "started",
+  FINISHED: "finished",
+};
+
 const GamePage = () => {
-  const [isGameStarted, setIsGameStarted] = useState(false);
-  const [isGameFinished, setIsGameFinished] = useState(false);
+  const [gameStatus, setGameStatus] = useState(GAME_STATUSES.PRESTART); // prestart, started, finished
   const [isVictory, setIsVictory] = useState(false);
 
   const [matchedCards, setMatchedCards] = useState([]);
@@ -40,8 +45,7 @@ const GamePage = () => {
   useEffect(() => {
     if (matchedCards.length === cardsAmount) {
       setIsVictory(true);
-      setIsGameFinished(true);
-      setIsGameStarted(false);
+      setGameStatus(GAME_STATUSES.FINISHED);
       setMatchedCards([]);
       setOpenedCards([]);
     }
@@ -52,14 +56,14 @@ const GamePage = () => {
       <header className={styles.header}>
         <div>Open Welcome</div>
         <Time
-          isGameStarted={isGameStarted}
+          isGameStarted={gameStatus === GAME_STATUSES.STARTED}
           isVictory={isVictory}
-          setIsGameFinished={setIsGameFinished}
+          onFinish={() => setGameStatus(GAME_STATUSES.FINISHED)}
         />
         <div>Matched: {matchedCards.length}</div>
       </header>
       <div className={styles.gameField}>
-        {isGameStarted ? (
+        {gameStatus === GAME_STATUSES.STARTED ? (
           <Game
             cards={cards}
             openedCards={openedCards}
@@ -67,15 +71,19 @@ const GamePage = () => {
             setOpenedCards={setOpenedCards}
             setMatchedCards={setMatchedCards}
           />
-        ) : isGameFinished ? (
-          <Results isVictory={isVictory} setIsVictory={setIsVictory} setIsGameStarted={setIsGameStarted} />
+        ) : gameStatus === GAME_STATUSES.FINISHED ? (
+          <Results
+            isVictory={isVictory}
+            setIsVictory={setIsVictory}
+            onStart={() => setGameStatus(GAME_STATUSES.STARTED)}
+          />
         ) : (
           <div className={styles.preStartText}>
             <p>You have only 1 min to win.</p>
             <p>If it is ok, press</p>
             <button
               className={styles.startButton}
-              onClick={() => setIsGameStarted(true)}
+              onClick={() => setGameStatus(GAME_STATUSES.STARTED)}
             >
               START
             </button>

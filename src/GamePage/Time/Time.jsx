@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
-const Time = ({ isGameStarted, isVictory, setIsGameFinished }) => {
+const Time = ({ isGameStarted, isVictory, onFinish }) => {
   const [timeLimit, setTimeLimit] = useState(180000); // seconds
 
   const timerRef = useRef(null);
@@ -14,7 +14,7 @@ const Time = ({ isGameStarted, isVictory, setIsGameFinished }) => {
 
   const finishGame = () => {
     clearInterval(timerRef.current);
-    setIsGameFinished(true);
+    onFinish()
   };
 
   const startTimer = () => {
@@ -50,7 +50,7 @@ const Time = ({ isGameStarted, isVictory, setIsGameFinished }) => {
 Time.propTypes = {
   isGameStarted: PropTypes.bool,
   isVictory: PropTypes.bool,
-  setIsGameFinished: PropTypes.func,
+  onFinish: PropTypes.func,
 };
 
 export default Time;

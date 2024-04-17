@@ -1,44 +1,44 @@
-@import '../styles/vars';
+@import "../styles/vars";
 
 .welcomeWindow {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vw;
-    background-color: $black;
-    padding: 4vw;
-    transition: 1.4s all;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vw;
+  background-color: $black;
+  padding: 4vw;
+  transition: 1.4s all;
 
-    &.hidden {
-        top: -100vw;
-    }
+  &.hidden {
+    top: -100vw;
+  }
 }
 
 .firstLine {
-    margin-bottom: 4vw;
+  margin-bottom: 4vw;
 }
 
 .lastLine {
-    margin: 4vw 0;
+  margin: 4vw 0;
 }
 
 .startButtonWrapper {
-    opacity: 0;
-    pointer-events: none;
-    transition: $transition;
+  opacity: 0;
+  pointer-events: none;
+  transition: $transition;
 
-    &.show {
-        opacity: 1;
-        pointer-events: all;
-    }
+  &.show {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 .skip {
-    position: absolute;
-    top: 4vw;
-    right: 4vw;
-    color: $grey_light;
-    border: none;
-    text-decoration: underline;
+  position: absolute;
+  top: 4vw;
+  right: 4vw;
+  color: $grey_light;
+  border: none;
+  text-decoration: underline;
 }

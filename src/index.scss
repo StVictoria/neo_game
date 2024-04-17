@@ -30,10 +30,16 @@ button {
   background-color: inherit;
   color: $white;
   padding: 0;
-  border: 1px solid $white;
+  border: none;
   cursor: pointer;
 }
 
 a {
   color: $white;
+}
+
+p,
+button,
+a {
+  margin: 1.2vw 0;
 }

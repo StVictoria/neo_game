@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 const Time = ({ isGameStarted, isVictory, setIsGameFinished }) => {
-  const [timeLimit, setTimeLimit] = useState(180); // seconds
+  const [timeLimit, setTimeLimit] = useState(180000); // seconds
 
   const timerRef = useRef(null);
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import WelcomePage from "./WelcomeWindow/WelcomeWindow";
-import GamePage from "./Game/Game";
+import GamePage from "./GamePage/GamePage";
 
 function App() {
   const [isWelcomeShowed, setIsWelcomeShowed] = useState(true);

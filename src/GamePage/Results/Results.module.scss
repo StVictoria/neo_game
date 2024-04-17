@@ -1,0 +1,17 @@
+@import "../../../styles/vars";
+
+.resultsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.transferButton {
+  color: $grey_light;
+  text-decoration: underline;
+  transition: $transition;
+
+  &:hover {
+    color: $white;
+  }
+}

@@ -1,0 +1,22 @@
+@import '../../../styles/vars';
+
+.gameWrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 100px); /* Создает 4 столбца с равной шириной */
+    grid-gap: 40px;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid $white;
+    transform-style: preserve-3d;
+
+    &.opened {
+        color: $green;
+        pointer-events: none;
+    }
+}

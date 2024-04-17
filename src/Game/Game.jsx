@@ -1,4 +1,4 @@
-const GamePage = () => {
+const Game = () => {
   return (
     <div>
       GAME PAGE
@@ -6,4 +6,4 @@ const GamePage = () => {
   )
 }
 
-export default GamePage
+export default Game

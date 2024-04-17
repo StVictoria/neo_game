@@ -1,20 +1,17 @@
-import { Link } from "react-router-dom";
 import styles from "./Button.module.scss";
 import PropTypes from "prop-types";
 
-const Button = ({ link, text }) => {
-  return link.length !== 0 ? (
-    <Link className={styles.button} to={link}>
+const Button = ({ text, onClick }) => {
+  return (
+    <button className={styles.button} onClick={onClick}>
       {text}
-    </Link>
-  ) : (
-    <button className={styles.button}>{text}</button>
+    </button>
   );
 };
 
 Button.propTypes = {
-  text: PropTypes.string,
-  link: PropTypes.string,
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Button;

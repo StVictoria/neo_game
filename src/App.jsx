@@ -1,14 +1,22 @@
-import { Route, Routes } from "react-router-dom";
-import WelcomePage from "./WelcomePage/WelcomePage";
-import GamePage from "./GamePage/GamePage";
+import { useState } from "react";
+import WelcomePage from "./WelcomeWindow/WelcomeWindow";
+import GamePage from "./Game/Game";
 
 function App() {
+  const [isWelcomeShowed, setIsWelcomeShowed] = useState(true);
+
+  const handleCloseWelcomeWindow = () => {
+    setIsWelcomeShowed(false);
+  };
+
   return (
-    <Routes>
-      <Route path="/" element={<WelcomePage />} />
-      <Route path="game" element={<GamePage />} />
-      <Route path="*" element={<div>Ooops, wrong page</div>} />
-    </Routes>
+    <>
+      <GamePage />
+      <WelcomePage
+        isWelcomeShowed={isWelcomeShowed}
+        onClose={handleCloseWelcomeWindow}
+      />
+    </>
   );
 }
 

@@ -1,11 +1,11 @@
-import { useEffect, useState }from "react";
+import { useEffect, useState } from "react";
 import Button from "../common/Button/Button";
 import TypeElement from "../common/TypeElement/TypeElement";
 import cn from "classnames";
-import styles from "./WelcomePage.module.scss";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import styles from "./WelcomeWindow.module.scss";
 
-const WelcomePage = () => {
+const WelcomePage = ({ isWelcomeShowed, onClose }) => {
   const [showStartButton, setShowStartButton] = useState(false);
 
   useEffect(() => {
@@ -15,10 +15,14 @@ const WelcomePage = () => {
     return () => {
       clearTimeout(timerId);
     };
-  });
+  }, []);
 
   return (
-    <>
+    <div
+      className={cn(styles.welcomeWindow, {
+        [styles.hidden]: !isWelcomeShowed,
+      })}
+    >
       <div className={styles.firstLine}>
         <TypeElement strings={["Hello and welcome to the game!"]} />
       </div>
@@ -42,12 +46,19 @@ const WelcomePage = () => {
           [styles.show]: showStartButton,
         })}
       >
-        <Button link='game' text="LET'S START" />
+        <Button text="LET'S START" onClick={onClose} />
       </div>
 
-      <Link to='game' className={styles.skip}>SKIP</Link>
-    </>
+      <button className={styles.skip} onClick={onClose}>
+        SKIP
+      </button>
+    </div>
   );
+};
+
+WelcomePage.propTypes = {
+  isWelcomeShowed: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default WelcomePage;

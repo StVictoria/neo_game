@@ -1,5 +1,20 @@
 @import '../styles/vars';
 
+.welcomeWindow {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vw;
+    background-color: $black;
+    padding: 4vw;
+    transition: 1.4s all;
+
+    &.hidden {
+        top: -100vw;
+    }
+}
+
 .firstLine {
     margin-bottom: 4vw;
 }
@@ -24,4 +39,6 @@
     top: 4vw;
     right: 4vw;
     color: $grey_light;
+    border: none;
+    text-decoration: underline;
 }

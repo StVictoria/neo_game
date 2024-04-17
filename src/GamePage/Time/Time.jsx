@@ -35,6 +35,7 @@ const Time = ({ isGameStarted, isVictory, setIsGameFinished }) => {
 
   useEffect(() => {
     if (isGameStarted) {
+      setTimeLimit(180)
       startTimer();
     }
   }, [isGameStarted]);

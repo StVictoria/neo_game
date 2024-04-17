@@ -9,22 +9,22 @@ const cards = [
   { id: 2, img: "///", value: 100 },
   { id: 3, img: "///", value: 200 },
   { id: 4, img: "///", value: 200 },
-  { id: 5, img: "///", value: 300 },
-  { id: 6, img: "///", value: 300 },
-  { id: 7, img: "///", value: 400 },
-  { id: 8, img: "///", value: 400 },
-  { id: 9, img: "///", value: 500 },
-  { id: 10, img: "///", value: 500 },
-  { id: 11, img: "///", value: 600 },
-  { id: 12, img: "///", value: 600 },
-  { id: 13, img: "///", value: 700 },
-  { id: 14, img: "///", value: 700 },
-  { id: 15, img: "///", value: 800 },
-  { id: 16, img: "///", value: 800 },
-  { id: 17, img: "///", value: 900 },
-  { id: 18, img: "///", value: 900 },
-  { id: 19, img: "///", value: 1000 },
-  { id: 20, img: "///", value: 1000 },
+  // { id: 5, img: "///", value: 300 },
+  // { id: 6, img: "///", value: 300 },
+  // { id: 7, img: "///", value: 400 },
+  // { id: 8, img: "///", value: 400 },
+  // { id: 9, img: "///", value: 500 },
+  // { id: 10, img: "///", value: 500 },
+  // { id: 11, img: "///", value: 600 },
+  // { id: 12, img: "///", value: 600 },
+  // { id: 13, img: "///", value: 700 },
+  // { id: 14, img: "///", value: 700 },
+  // { id: 15, img: "///", value: 800 },
+  // { id: 16, img: "///", value: 800 },
+  // { id: 17, img: "///", value: 900 },
+  // { id: 18, img: "///", value: 900 },
+  // { id: 19, img: "///", value: 1000 },
+  // { id: 20, img: "///", value: 1000 },
 ];
 
 const GamePage = () => {
@@ -41,6 +41,9 @@ const GamePage = () => {
     if (matchedCards.length === cardsAmount) {
       setIsVictory(true);
       setIsGameFinished(true);
+      setIsGameStarted(false);
+      setMatchedCards([]);
+      setOpenedCards([]);
     }
   }, [matchedCards.length]);
 
@@ -56,7 +59,17 @@ const GamePage = () => {
         <div>Matched: {matchedCards.length}</div>
       </header>
       <div className={styles.gameField}>
-        {!isGameStarted ? (
+        {isGameStarted ? (
+          <Game
+            cards={cards}
+            openedCards={openedCards}
+            matchedCards={matchedCards}
+            setOpenedCards={setOpenedCards}
+            setMatchedCards={setMatchedCards}
+          />
+        ) : isGameFinished ? (
+          <Results isVictory={isVictory} setIsVictory={setIsVictory} setIsGameStarted={setIsGameStarted} />
+        ) : (
           <div className={styles.preStartText}>
             <p>You have only 1 min to win.</p>
             <p>If it is ok, press</p>
@@ -67,16 +80,6 @@ const GamePage = () => {
               START
             </button>
           </div>
-        ) : isGameFinished ? (
-          <Results isVictory={isVictory} />
-        ) : (
-          <Game
-            cards={cards}
-            openedCards={openedCards}
-            matchedCards={matchedCards}
-            setOpenedCards={setOpenedCards}
-            setMatchedCards={setMatchedCards}
-          />
         )}
       </div>
     </div>

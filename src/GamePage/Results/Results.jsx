@@ -2,7 +2,12 @@ import PropTypes from "prop-types";
 import Button from "../../common/Button/Button";
 import styles from "./Results.module.scss";
 
-const Results = ({ isVictory }) => {
+const Results = ({ isVictory, setIsVictory, setIsGameStarted }) => {
+  const playAgain = () => {
+    setIsGameStarted(true);
+    setIsVictory(false);
+  };
+
   return (
     <div className={styles.resultsWrapper}>
       {isVictory ? (
@@ -15,7 +20,7 @@ const Results = ({ isVictory }) => {
       ) : (
         <p>I&#39;m sorry, you are out of time :(</p>
       )}
-      <Button text="START AGAIN" />
+      <Button text="PLAY AGAIN" onClick={playAgain} />
       <button className={styles.transferButton}>
         Transfer tokens to your wallet
       </button>
@@ -25,6 +30,8 @@ const Results = ({ isVictory }) => {
 
 Results.propTypes = {
   isVictory: PropTypes.bool,
+  setIsVictory: PropTypes.func,
+  setIsGameStarted: PropTypes.func,
 };
 
 export default Results;

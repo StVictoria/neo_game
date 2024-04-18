@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { TIME } from "../../data";
 
 const Time = ({ isGameStarted, isVictory, onFinish }) => {
-  const [timeLimit, setTimeLimit] = useState(180000); // seconds
+  const [timeLimit, setTimeLimit] = useState(TIME); // seconds
 
   const timerRef = useRef(null);
 
@@ -35,7 +36,7 @@ const Time = ({ isGameStarted, isVictory, onFinish }) => {
 
   useEffect(() => {
     if (isGameStarted) {
-      setTimeLimit(180)
+      setTimeLimit(TIME)
       startTimer();
     }
   }, [isGameStarted]);

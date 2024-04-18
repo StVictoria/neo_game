@@ -1,0 +1,24 @@
+@import "../../../styles/vars";
+
+.tokensCounter {
+  display: flex;
+  align-items: center;
+}
+
+.exportButton {
+  width: 1.2vw;
+  height: 1.2vw;
+  background: url("../../assets/export.svg") center center / contain no-repeat;
+  margin-left: 1.2vw;
+}
+
+.metamask {
+  color: $orange;
+}
+
+.warning {
+//   color: $red;
+  font-weight: bold;
+  
+  text-transform: uppercase;
+}

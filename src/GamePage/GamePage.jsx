@@ -5,9 +5,10 @@ import Game from "./Game/Game";
 import Results from "./Results/Results";
 import { GAME_STATUSES, USER_TOKENS_AMOUNT, cards } from "../../utils/data";
 import { useMyContext } from "../../utils/ContextProvider";
+import TokensCounter from "./TokensCounter/TokensCounter";
 
 const GamePage = () => {
-  const { userTokensAmount, updateUserTokensAmount } = useMyContext();
+  const { updateUserTokensAmount } = useMyContext();
 
   const [gameStatus, setGameStatus] = useState(GAME_STATUSES.PRESTART); // prestart, started, finished
   const [isVictory, setIsVictory] = useState(false);
@@ -39,7 +40,7 @@ const GamePage = () => {
           isVictory={isVictory}
           onFinish={() => setGameStatus(GAME_STATUSES.FINISHED)}
         />
-        <div>NEO tokens: {userTokensAmount}</div>
+       <TokensCounter />
       </header>
       <div className={styles.gameField}>
         {gameStatus === GAME_STATUSES.STARTED ? (

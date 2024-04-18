@@ -1,0 +1,41 @@
+@import "../../../styles/vars";
+
+.modalWrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  &.opened {
+    display: flex;
+  }
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  text-align: center;
+  color: $white;
+  background-color: $grey;
+  padding: 2vw;
+  padding-right: 3vw;
+  border: 1px solid $white;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.8vw;
+  right: 0.8vw;
+  width: 1vw;
+  height: 1vw;
+  margin: 0;
+  background: url("../../assets/close.svg") center center / contain no-repeat;
+}

@@ -5,7 +5,7 @@
 }
 
 ::selection {
-  background-color: $green;
+  background-color: $grey_light;
 }
 
 html,
@@ -45,5 +45,6 @@ a {
 p,
 button,
 a {
+  line-height: 1.6vw;
   margin: 1.2vw 0;
 }

@@ -52,6 +52,14 @@ const WelcomePage = ({ isWelcomeShowed, onClose }) => {
       <button className={styles.skip} onClick={onClose}>
         SKIP
       </button>
+
+      {/* <div className={styles.noticeMessage}>
+        <p>
+          <b>NOTICE: </b>it is just a pet project. NEO works in Ropsten Testnet.
+        </p>
+        <p>Progress is saved in your browser local data.</p>
+        <p>If you clear the data, you will loose the progress :(</p>
+      </div> */}
     </div>
   );
 };

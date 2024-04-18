@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { TIME } from "../../../utils/data";
 
 const Time = ({ isGameStarted, isVictory, onFinish }) => {
-
-  const [timeLimit, setTimeLimit] = useState(TIME); // seconds
+  const [timeLimit, setTimeLimit] = useState(TIME);
 
   const timerRef = useRef(null);
 
@@ -16,7 +15,7 @@ const Time = ({ isGameStarted, isVictory, onFinish }) => {
 
   const finishGame = () => {
     clearInterval(timerRef.current);
-    onFinish()
+    onFinish();
   };
 
   const startTimer = () => {
@@ -37,7 +36,7 @@ const Time = ({ isGameStarted, isVictory, onFinish }) => {
 
   useEffect(() => {
     if (isGameStarted) {
-      setTimeLimit(TIME)
+      setTimeLimit(TIME);
       startTimer();
     }
   }, [isGameStarted]);

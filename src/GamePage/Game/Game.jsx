@@ -58,7 +58,11 @@ const Game = ({
           })}
           onClick={() => onCardClick({ id: card.id, value: card.value })}
         >
-          {isOpened ? card.value : "?"}
+          {isOpened ? (
+            <img className={styles.cardImg} src={card.img} alt={card.value} />
+          ) : (
+            "?"
+          )}
         </div>
       );
     });

@@ -22,9 +22,11 @@ export const cards = [
 ];
 
 export const GAME_STATUSES = {
-  PRESTART: "prestart",
-  STARTED: "started",
-  FINISHED: "finished",
+  PRESTART: "PRESTART",
+  STARTED: "STARTED",
+  FINISHED: "FINISHED",
 };
 
-export const TIME = 60;
+export const TIME = 60; // seconds
+
+export const USER_TOKENS_AMOUNT = 'USER_TOKENS_AMOUNT' // for localStorage

@@ -33,7 +33,7 @@ const WelcomePage = ({ isWelcomeShowed, onClose }) => {
       <TypeElement
         delay={7000}
         strings={[
-          "And if you complete it in limited time, I will pay you some coins called NEO.",
+          "And if you complete it in limited time, I will pay you some tokens called NEO.",
         ]}
       />
       <TypeElement delay={13000} strings={["Pretty obvious, huh"]} />

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { TIME } from "../../data";
+import { TIME } from "../../../utils/data";
 
 const Time = ({ isGameStarted, isVictory, onFinish }) => {
+
   const [timeLimit, setTimeLimit] = useState(TIME); // seconds
 
   const timerRef = useRef(null);

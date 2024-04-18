@@ -3,32 +3,28 @@ import styles from "./GamePage.module.scss";
 import Time from "./Time/Time";
 import Game from "./Game/Game";
 import Results from "./Results/Results";
-import { GAME_STATUSES, cards } from "../data";
+import { GAME_STATUSES, USER_TOKENS_AMOUNT, cards } from "../../utils/data";
+import { useMyContext } from "../../utils/ContextProvider";
 
 const GamePage = () => {
+  const { userTokensAmount, updateUserTokensAmount } = useMyContext();
+
   const [gameStatus, setGameStatus] = useState(GAME_STATUSES.PRESTART); // prestart, started, finished
   const [isVictory, setIsVictory] = useState(false);
 
   const [matchedCards, setMatchedCards] = useState([]);
   const [openedCards, setOpenedCards] = useState([]); // [{id: number, value: number}, {...}]
 
-  const [neoTokensAmount, setNeoTokensAmount] = useState(0);
-
   const cardsAmount = cards.length;
-
-  useEffect(() => {
-    setNeoTokensAmount(+localStorage.getItem("neo_tokens"));
-  }, []);
 
   useEffect(() => {
     if (matchedCards.length === cardsAmount) {
       setIsVictory(true);
       setGameStatus(GAME_STATUSES.FINISHED);
-      setMatchedCards([]);
       setOpenedCards([]);
-      setNeoTokensAmount((prevAmount) => {
+      updateUserTokensAmount((prevAmount) => {
         const newAmount = prevAmount + 1;
-        localStorage.setItem("neo_tokens", newAmount);
+        localStorage.setItem(USER_TOKENS_AMOUNT, newAmount);
         return newAmount;
       });
     }
@@ -43,7 +39,7 @@ const GamePage = () => {
           isVictory={isVictory}
           onFinish={() => setGameStatus(GAME_STATUSES.FINISHED)}
         />
-        <div>NEO tokens: {neoTokensAmount}</div>
+        <div>NEO tokens: {userTokensAmount}</div>
       </header>
       <div className={styles.gameField}>
         {gameStatus === GAME_STATUSES.STARTED ? (
@@ -58,7 +54,10 @@ const GamePage = () => {
           <Results
             isVictory={isVictory}
             setIsVictory={setIsVictory}
-            onStart={() => setGameStatus(GAME_STATUSES.STARTED)}
+            onStart={() => {
+              setGameStatus(GAME_STATUSES.STARTED);
+              setMatchedCards([]);
+            }}
           />
         ) : (
           <div className={styles.preStartText}>
